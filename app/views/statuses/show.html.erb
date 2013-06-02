@@ -1,15 +1,21 @@
-<p id="notice"><%= notice %></p>
+<br>
+<h4> Status </h4>
 
-<p>
-  <b>Name:</b>
-  <%= @status.user.full_name %>
-</p>
+<div class="well">
+	<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Content:</b>
-  <%= @status.content %>
-</p>
+	<p>
+	  <b>Name:</b>
+	  <%= link_to @status.user.full_name, profiles_path(@status.user.profile_name) %>
+	</p>
 
+	<p>
+	  <b>Content:</b>
+	  <%= @status.content %>
+	</p>
 
-<%= link_to 'Edit', edit_status_path(@status) %> |
-<%= link_to 'Back', statuses_path %>
+	updated <%= time_ago_in_words(@status.updated_at) %> ago
+	| <%= link_to 'Edit', edit_status_path(@status) %>
+	| <%= link_to 'Back', statuses_path %>
+	| <%= link_to "Delete", @status, method: :delete, data: {confirm: "Are you sure you want to delete this status?"} %>
+</div>
