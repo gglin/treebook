@@ -6,7 +6,7 @@
 
 <hr>
 
-<% @statuses.each do |status| %>
+<% @statuses.sort{|x,y| y.created_at <=> x.created_at}.each do |status| %>
   
   <div class="status">
     <div class="row">

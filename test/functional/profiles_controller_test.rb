@@ -24,4 +24,8 @@ class ProfilesControllerTest < ActionController::TestCase
   		assert_equal users(:jason), status.user
   	end
   end
+
+  test "only shows edit account settings if it's signed-in current_user" do 
+    # will remain untested without better understanding of devise's current_user
+  end
 end

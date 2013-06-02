@@ -6,14 +6,16 @@
 		<div class="span9">
 			<h1><%= @user.full_name %></h1>
 		</div>
-		<div class="span2" id="edit-account">
-			<p><%= link_to "Edit Account Settings", edit_user_registration_path %></p>
+		<div <% if current_user != @user %> class="hide-admin" <% end %> >
+			<div class="span2" id="edit-account">
+				<p><%= link_to "Edit Account Settings", edit_user_registration_path %></p>
+			</div>
 		</div>
 	</div>
 </div>
 
 <% if @statuses %>
-	<% @statuses.each do |status| %>
+	<% @statuses.sort{|x,y| y.created_at <=> x.created_at}.each do |status| %>
 		<div class="well status">
 			<div class="pad">
 				<%= link_to status.content, status_path(status) %>
